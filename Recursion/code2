@@ -1,13 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
-void func(int cur[],int l,int n){
-    /*Input: First line n, a number n (1<=n<=10)
+/*Input: First line n, a number n (1<=n<=10)
     Output: Each line contains a list of space-separated
     digits while the list contains n digits. The digits
     in the list are 0 to 4( inclusive). The odd-indexed
     digit in the list is an odd digit. The even-indexed
     digit in the list is an even digit. The list will be
     printed in sorted order Example 010 before 012 */
+void func(int cur[],int l,int n){
     if(l==n){
         for(int i=0;i<n;i++){
             if(i) cout << " ";
