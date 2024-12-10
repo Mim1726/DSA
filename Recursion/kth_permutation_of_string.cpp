@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-//kth lowest lexicographically permutation of a string
+//kth lexicographically lowest permutation of a string
 void func(string s,int k){
     sort(s.begin(),s.end());
     int cnt=1;
