@@ -8,34 +8,43 @@ struct tree{
         node* parent;
     };
     node* root=NULL;
-    void insert_1(int x){
+
+    void insertion(int x){
         node* a=new node();
         a->val=x;
         a->left=NULL;
         a->right=NULL;
         a->parent=NULL;
-        if(root){
-            insert_2(root,a);
-        }
-        else{
-            root=a;
-        }
-    }
 
-    void insert_2(node* p,node* a){
-        if(p->val >= a->val && p->left == NULL){
-            p->left=a;
-            a->parent=p;
+        if(!root){
+            root=a;
+            return;
         }
-        else if(p->val < a->val && p->right == NULL){
-            p->right=a;
-            a->parent=p;
-        }
-        else if(p->val >= a->val){
-            insert_2(p->left,a);
-        }
-        else{
-            insert_2(p->right,a);
+
+        queue<node*> q;
+        q.push(root);
+
+        while(!q.empty()){
+            node* curr=q.front();
+            q.pop();
+
+            if(!curr->left){
+                curr->left=a;
+                a->parent=curr;
+                return;
+            }
+            else{
+                q.push(curr->left);
+            }
+
+            if(!curr->right){
+                curr->right=a;
+                a->parent=curr;
+                return;
+            }
+            else{
+                q.push(curr->right);
+            }
         }
     }
     void inorder(node* p){
@@ -52,7 +61,7 @@ int main(){
     for(int i=0;i<n;i++){
         int x;
         cin >> x;
-        my_tree.insert_1(x);
+        my_tree.insertion(x);
     }
     my_tree.inorder(my_tree.root);
     return 0;
