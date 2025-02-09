@@ -81,8 +81,7 @@ int extractMax(){
 
     heap[0] = heap[last_index];
     last_index--;
-
-
+    heapifyDown(0);
     return ret;
 }
 
